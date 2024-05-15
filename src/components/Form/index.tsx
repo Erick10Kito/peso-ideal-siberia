@@ -51,11 +51,11 @@ if(nome && idade && altura && pesoAtual && pesoDesejado) {
                         <input type="number" placeholder="Peso desejado" className="h-10 rounded px-2" value={pesoDesejado} onChange={(e) => setPesoDesejado(e.target.valueAsNumber)} />
                         <div className="flex justify-center items-center gap-4">
                             <label className="flex items-center gap-2 text-white">
-                                <input type="checkbox" value="Feminino" checked={genero === 'Feminino'} onChange={(e) => setGenero(e.target.checked ? 'Feminino' : 'Masculino')} />
+                                <input type="checkbox" value="Feminino" checked={genero === 'Feminino'} onChange={(e) => setGenero(e.target.checked ? 'Feminino' : '')} />
                                 Feminino
                             </label>
                             <label className="flex items-center gap-2 text-white">
-                                <input type="checkbox" value="Masculino" checked={genero === 'Masculino'} onChange={(e) => setGenero(e.target.checked ? 'Masculino' : 'Feminino')} />
+                                <input type="checkbox" value="Masculino" checked={genero === 'Masculino'} onChange={(e) => setGenero(e.target.checked ? 'Masculino' : '')} />
                                 Masculino
                             </label>
                         </div>

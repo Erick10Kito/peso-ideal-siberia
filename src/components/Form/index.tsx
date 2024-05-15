@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from "react"
-import { useRouter } from 'next/router';
+
+import ReactPlayer from "react-player";
 
 
 export function Form() {
@@ -41,7 +42,7 @@ if(nome && idade && altura && pesoAtual && pesoDesejado) {
             <>
             <h1 className="font-black uppercase text-4xl text-center">Você ganhou um teste gratuito</h1>
             <p className="font-bold text-xl text-center">Responda as questões abaixo e veja quantos <span className="text-[#0E3DC1]">Kg</span> pode perder com <span className="text-[#0E3DC1]">OzempicNatural</span></p>
-            <div className="bg-[#0E3DC1] max-w-4xl p-6 mt-5">
+            <div className="bg-[#0E3DC1] max-w-4xl p-6 mt-5 rounded">
 
                     <form className="flex flex-col gap-4 justify-center " onSubmit={handleSubmitForm}>
                         <input type="text" placeholder="Nome" className="h-10 rounded px-2" value={nome} onChange={(e) => setNome(e.target.value)} />
@@ -74,16 +75,22 @@ if(nome && idade && altura && pesoAtual && pesoDesejado) {
         ) : (
             <>
          
-                    <div className="bg-[#0E3DC1] max-w-4xl p-6 mt-5">
-                        <h3 className="text-white text-3xl uppercase font-semibold mb-5">{NoInfo ? `Ola ${nome}, Veja agora o seu resultado:` : "Volte e preencha suas informações"}</h3>
+                    <div className="bg-[#0E3DC1] max-w-4xl p-6 mt-5 rounded">
+                        <h3 className="text-white text-2xl uppercase font-semibold mb-5 text-center">{NoInfo ? `Olá ${nome}, Veja agora o seu resultado:` : "Volte e preencha suas informações"}</h3>
                  
                             <div>
                              {diferenca ? (
                                 <div className="bg-white p-2 rounded"> 
                                     <h1 className="text-center text-2xl font-semibold">Você vai perder <span className="text-[#0E3DC1]">{diferenca}kg</span> em <span className="text-[#0E3DC1]">{diferenca*2}</span> dias com o OzempicNatural</h1>
+                                    <div className="grid justify-center mt-2 mb-4">
+                                        <p className="text-center mb-2 text-xl">Quer saber como? Assista o video abaixo!</p>
+                                      <ReactPlayer url='https://www.youtube.com/watch?v=Il3UZXPrZlw' controls/>
+                                    </div>
+                                    <button onClick={()=>setResults(false)} className="bg-green-600 py-3 rounded text-white uppercase font-bold w-full">Fazer outro cálculo</button>
+
                                 </div>
                              ): (
-                                <button onClick={()=>setResults(false)} className="bg-green-600 py-3 rounded text-white uppercase font-bold w-full">VOLTAR</button>
+                                <button onClick={()=>setResults(false)} className="bg-green-600 py-3 rounded text-white uppercase font-bold w-full">Voltar</button>
                              )}
                             </div>
                         </div>

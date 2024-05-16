@@ -138,7 +138,7 @@ export function Form() {
                 </>
             ) : (
                 <>
-                    <div className="bg-[#0E3DC1] max-w-4xl p-6 mt-5">
+                    <div className="bg-[#0E3DC1] max-w-4xl p-6 mt-5 rounded">
                         <h3 className="text-white text-2xl uppercase font-semibold mb-5 text-center">{dataUser ? `Olá ${dataUser.name && dataUser.name}, Veja agora o seu resultado:` : "Volte e preencha suas informações"}</h3>
                         <div>
                             {dataUser && results ? (

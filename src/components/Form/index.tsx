@@ -138,15 +138,17 @@ export function Form() {
                 </>
             ) : (
                 <>
-                    <div className="bg-[#0E3DC1] max-w-4xl p-6 mt-5">
-                        <h3 className="text-white text-2xl uppercase font-semibold mb-5 text-center">{dataUser ? `Olá ${dataUser.name && dataUser.name}, Veja agora o seu resultado:` : "Volte e preencha suas informações"}</h3>
+                    <div className="bg-[#0E3DC1] max-w-4xl p-6 mt-5 max-[768px]:p-4">
+                        <h3 className="text-white text-2xl uppercase font-semibold mb-5 text-center max-[768px]:text-xl">{dataUser ? `Olá ${dataUser.name && dataUser.name}, Veja agora o seu resultado:` : "Volte e preencha suas informações"}</h3>
                         <div>
                             {dataUser && results ? (
-                                <div className="bg-white p-2 rounded">
-                                    <h1 className="text-center text-2xl font-semibold">Você vai perder <span className="text-[#0E3DC1]">{diferenca}kg</span> em <span className="text-[#0E3DC1]">{diferenca && diferenca * 2}</span> dias com o OzempicNatural</h1>
-                                    <div className="grid justify-center mt-2 mb-4">
-                                        <p className="text-center mb-2 text-xl">Quer saber como? Assista o video abaixo!</p>
-                                        <ReactPlayer url='https://www.youtube.com/watch?v=Il3UZXPrZlw' controls />
+                                <div className="bg-white p-2 rounded w-full">
+                                    <h1 className="text-center text-2xl font-semibold max-[768px]:text-xl">Você vai perder <span className="text-[#0E3DC1]">{diferenca}kg</span> em <span className="text-[#0E3DC1]">{diferenca && diferenca * 2}</span> dias com o OzempicNatural</h1>
+                                    <div className="grid justify-center mt-2 mb-4 w-full">
+                                        <p className="text-center mb-2 text-xl max-[768px]:text-lg">Quer saber como? Assista o video abaixo!</p>
+                                        <div className="min-w-[600px] max-[768px]:w-full max-[768px]:min-w-0">
+                                        <ReactPlayer url='https://www.youtube.com/watch?v=Il3UZXPrZlw' controls width={'100%'} />
+                                        </div>
                                     </div>
                                     <button onClick={() => setResults(false)} className="bg-green-600 py-3 rounded text-white uppercase font-bold w-full">Fazer outro cálculo</button>
                                 </div>

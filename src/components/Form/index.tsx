@@ -5,7 +5,7 @@ import ReactPlayer from "react-player";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { object, string } from "yup";
+import { number, object, ref, string } from "yup";
 
 interface IDataFormProps {
     name: string;
@@ -17,11 +17,30 @@ interface IDataFormProps {
 }
 
 const schema = object({
-    name: string().required("Campo Obrigatório"),
-    age: string().matches(/^\d*$/, 'Somente números').required('Campo Obrigatório'),
-    height: string().matches(/^\d*$/, 'Somente números').required('Campo Obrigatório'),
-    currentWeight: string().matches(/^\d*$/, 'Somente números').required('Campo Obrigatório'),
-    desiredWeight: string().matches(/^\d*$/, 'Somente números').required('Campo Obrigatório'),
+    name: string()
+        .required("Campo Obrigatório")
+        .min(3, "Deve conter pelo menos 3 caracteres"),
+    age: number()
+        .typeError("Por favor, insira um número válido")
+        .positive("Deve ser um número positivo.")
+        .integer("Deve ser um número inteiro.")
+        .required("Campo Obrigatório"),
+    height: number()
+        .typeError("Por favor, insira um número válido")
+        .positive("Deve ser um número positivo.")
+        .integer("Deve ser um número inteiro.")
+        .required("Campo Obrigatório"),
+    currentWeight: number()
+        .typeError("Por favor, insira um número válido")
+        .positive("Deve ser um número positivo.")
+        .integer("Deve ser um número inteiro.")
+        .required("Campo Obrigatório")
+        .min(ref("desiredWeight"), "O peso atual não pode ser menor que o peso desejado."),
+    desiredWeight: number()
+        .typeError("Por favor, insira um número válido")
+        .positive("Deve ser um número positivo.")
+        .integer("Deve ser um número inteiro.")
+        .required("Campo Obrigatório"),
     activityLevel: string().required("Campo Obrigatório"),
 });
 
@@ -59,7 +78,7 @@ export function Form() {
         }
     }
 
-    const diferenca = dataUser && Number(dataUser?.currentWeight) - Number(dataUser?.desiredWeight);
+    const diferenca = dataUser && dataUser?.currentWeight - dataUser?.desiredWeight;
 
     return (
         <>
